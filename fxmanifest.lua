@@ -6,10 +6,10 @@ version '1.0.0'
 
 files {
     'html/index.html',
-    'css/style.css',
-    'js/script.js',
-    'img/logo.png',
-    'aud/song.mp3',
+    'html/css/style.css',
+    'html/js/script.js',
+    'html/img/logo.png',
+    'html/aud/song.mp3',
 }
 
 loadscreen 'html/index.html'

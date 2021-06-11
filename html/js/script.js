@@ -1,12 +1,13 @@
 /*!
-
- * Thanks to Particleground for the particles!
+ * Particleground
  *
- * Particleground author @Jonathan Nicol - @mrjnicol
-
+ * @author Jonathan Nicol - @mrjnicol
+ * @version 1.1.0
+ * @description Creates a canvas based particle system background
+ *
+ * Inspired by http://requestlab.fr/ and http://disruptivebydesign.com/
  */
-this.console.log('LoadScreen Loaded <3 - Nonpayer');
-!(function(a, b) {
+!(function (a, b) {
     "use strict";
 
     function c(a) {
@@ -38,14 +39,14 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
                 }
                 a.addEventListener(
                         "resize",
-                        function() {
+                        function () {
                             k();
                         },
                         !1
                     ),
                     b.addEventListener(
                         "mousemove",
-                        function(a) {
+                        function (a) {
                             (A = a.pageX), (B = a.pageY);
                         },
                         !1
@@ -54,7 +55,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
                     !C &&
                     a.addEventListener(
                         "deviceorientation",
-                        function() {
+                        function () {
                             (F = Math.min(Math.max(-event.beta, -30), 30)),
                             (E = Math.min(Math.max(-event.gamma, -30), 30));
                         },
@@ -110,16 +111,16 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
 
         function n() {
             switch ((this.stackPos,
-                    (this.active = !0),
-                    (this.layer = Math.ceil(3 * Math.random())),
-                    (this.parallaxOffsetX = 0),
-                    (this.parallaxOffsetY = 0),
-                    (this.position = {
-                        x: Math.ceil(Math.random() * r.width),
-                        y: Math.ceil(Math.random() * r.height)
-                    }),
-                    (this.speed = {}),
-                    g.directionX)) {
+                (this.active = !0),
+                (this.layer = Math.ceil(3 * Math.random())),
+                (this.parallaxOffsetX = 0),
+                (this.parallaxOffsetY = 0),
+                (this.position = {
+                    x: Math.ceil(Math.random() * r.width),
+                    y: Math.ceil(Math.random() * r.height)
+                }),
+                (this.speed = {}),
+                g.directionX)) {
                 case "left":
                     this.speed.x = +(
                         -g.maxSpeedX +
@@ -195,7 +196,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
             G = !1;
         return (
             (g = c({}, a[e].defaults, g)),
-            (n.prototype.draw = function() {
+            (n.prototype.draw = function () {
                 s.beginPath(),
                     s.arc(
                         this.position.x + this.parallaxOffsetX,
@@ -232,7 +233,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
                 }
                 s.stroke(), s.closePath();
             }),
-            (n.prototype.updatePosition = function() {
+            (n.prototype.updatePosition = function () {
                 if (g.parallax) {
                     if (D && !C) {
                         var a = (u - 0) / 60;
@@ -281,7 +282,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
                 }
                 (this.position.x += this.speed.x), (this.position.y += this.speed.y);
             }),
-            (n.prototype.setStackPos = function(a) {
+            (n.prototype.setStackPos = function (a) {
                 this.stackPos = a;
             }),
             h(), {
@@ -294,7 +295,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
     }
     var e = "particleground",
         f = a.jQuery;
-    (a[e] = function(a, b) {
+    (a[e] = function (a, b) {
         return new d(a, b);
     }),
     (a[e].defaults = {
@@ -313,17 +314,17 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
         proximity: 100,
         parallax: !0,
         parallaxMultiplier: 5,
-        onInit: function() {},
-        onDestroy: function() {}
+        onInit: function () {},
+        onDestroy: function () {}
     }),
     f &&
-        (f.fn[e] = function(a) {
+        (f.fn[e] = function (a) {
             if ("string" == typeof arguments[0]) {
                 var b,
                     c = arguments[0],
                     g = Array.prototype.slice.call(arguments, 1);
                 return (
-                    this.each(function() {
+                    this.each(function () {
                         f.data(this, "plugin_" + e) &&
                             "function" == typeof f.data(this, "plugin_" + e)[c] &&
                             (b = f.data(this, "plugin_" + e)[c].apply(this, g));
@@ -333,7 +334,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
             }
             return "object" != typeof a && a ?
                 void 0 :
-                this.each(function() {
+                this.each(function () {
                     f.data(this, "plugin_" + e) ||
                         f.data(this, "plugin_" + e, new d(this, a));
                 });
@@ -346,7 +347,7 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
  * @license: MIT license
  */
 ,
-(function() {
+(function () {
     for (
         var a = 0, b = ["ms", "moz", "webkit", "o"], c = 0; c < b.length && !window.requestAnimationFrame;
         ++c
@@ -356,16 +357,16 @@ this.console.log('LoadScreen Loaded <3 - Nonpayer');
             window[b[c] + "CancelAnimationFrame"] ||
             window[b[c] + "CancelRequestAnimationFrame"]);
     window.requestAnimationFrame ||
-        (window.requestAnimationFrame = function(b) {
+        (window.requestAnimationFrame = function (b) {
             var c = new Date().getTime(),
                 d = Math.max(0, 16 - (c - a)),
-                e = window.setTimeout(function() {
+                e = window.setTimeout(function () {
                     b(c + d);
                 }, d);
             return (a = c + d), e;
         }),
         window.cancelAnimationFrame ||
-        (window.cancelAnimationFrame = function(a) {
+        (window.cancelAnimationFrame = function (a) {
             clearTimeout(a);
         });
 })();
@@ -399,7 +400,7 @@ particleground(document.getElementById("particles-background"), {
 });
 
 
-var TxtType = function(el, toRotate, period) {
+var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -409,7 +410,7 @@ var TxtType = function(el, toRotate, period) {
     this.isDeleting = false;
 };
 
-TxtType.prototype.tick = function() {
+TxtType.prototype.tick = function () {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
@@ -437,12 +438,12 @@ TxtType.prototype.tick = function() {
         delta = 500;
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
         that.tick();
     }, delta);
 };
 
-window.onload = function() {
+window.onload = function () {
     var elements = document.getElementsByClassName('typewrite');
     for (var i = 0; i < elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-type');
